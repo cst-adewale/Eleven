@@ -1,0 +1,21 @@
+--- Starting 15-Ailment Model Tests ---
+
+Running test_covid_symptoms...
+test_covid_symptoms passed!
+
+Running test_gastroenteritis...
+test_gastroenteritis passed!
+
+Running test_mono...
+test_mono passed!
+
+Running test_migraine...
+
+Tests failed: 
+Traceback (most recent call last):
+  File "C:\Users\HP\eleven\test_model.py", line 80, in <module>
+    test_func()
+  File "C:\Users\HP\eleven\test_model.py", line 52, in test_migraine
+    assert sorted_probs[0][0] == 'Migraine'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

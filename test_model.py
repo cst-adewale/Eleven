@@ -66,14 +66,23 @@ def test_pertussis():
     print("Pertussis test passed!")
 
 if __name__ == "__main__":
-    try:
-        test_covid_symptoms()
-        test_gastroenteritis()
-        test_mono()
-        test_migraine()
-        test_pertussis()
-        print("\nAll 15-ailment model tests passed successfully!")
-    except Exception as e:
-        print(f"\nTests failed: {e}")
-        import traceback
-        traceback.print_exc()
+    with open("test_results.txt", "w") as f:
+        def log(msg):
+            print(msg)
+            f.write(msg + "\n")
+
+        try:
+            log("--- Starting 15-Ailment Model Tests ---")
+            
+            # Test cases
+            for test_func in [test_covid_symptoms, test_gastroenteritis, test_mono, test_migraine, test_pertussis]:
+                log(f"\nRunning {test_func.__name__}...")
+                test_func()
+                log(f"{test_func.__name__} passed!")
+
+            log("\n--- All tests passed successfully! ---")
+        except Exception as e:
+            log(f"\nTests failed: {e}")
+            import traceback
+            traceback.print_exc(file=f)
+            traceback.print_exc()

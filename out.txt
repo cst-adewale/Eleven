@@ -1,0 +1,6 @@
+﻿Testing COVID-19 profile: Fever + Cough + Loss of Taste
+COVID-19: 0.9136
+Influenza (Flu): 0.0274
+Gastroenteritis (Stomach Flu): 0.0131
+Acute Sinusitis: 0.0112
+Infectious Mononucleosis: 0.0095
