@@ -1,0 +1,18 @@
+Testing Migraine profile: Headache + Nausea + Dizziness
+Influenza (Flu): 0.2771
+Migraine: 0.2547
+Gastroenteritis (Stomach Flu): 0.2194
+COVID-19: 0.0726
+Infectious Mononucleosis: 0.0500
+Otitis Media (Ear Infection): 0.0416
+Acute Sinusitis: 0.0280
+Bacterial Pneumonia: 0.0247
+Tuberculosis: 0.0124
+Common Cold: 0.0092
+Strep Throat: 0.0049
+Viral Bronchitis: 0.0033
+Allergic Rhinitis: 0.0011
+Pertussis (Whooping Cough): 0.0008
+Healthy: 0.0000
+
+Done.

@@ -10,12 +10,9 @@ Running test_mono...
 test_mono passed!
 
 Running test_migraine...
+test_migraine passed!
 
-Tests failed: 
-Traceback (most recent call last):
-  File "C:\Users\HP\eleven\test_model.py", line 80, in <module>
-    test_func()
-  File "C:\Users\HP\eleven\test_model.py", line 52, in test_migraine
-    assert sorted_probs[0][0] == 'Migraine'
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError
+Running test_pertussis...
+test_pertussis passed!
+
+--- All tests passed successfully! ---

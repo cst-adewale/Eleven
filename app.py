@@ -6,38 +6,78 @@ from model import perform_inference
 # Page configuration
 st.set_page_config(
     page_title="Eleven | Advanced Diagnosis",
-    page_icon="🩺",
+    page_icon="⏸️",
     layout="wide"
 )
 
-# Custom CSS for look and feel
+# Custom CSS for Premium Look & UI Refinements
 st.markdown("""
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    html, body, [class*="css"] {
+        font-family: 'Poppins', sans-serif;
+    }
+
     .main {
         background-color: #0e1117;
         color: #ffffff;
     }
+
+    /* iOS Style Toggle */
+    .stCheckbox > label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Custom Switch Container */
+    .switch-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    /* Pause Logo Styling */
+    .pause-logo {
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #00d4ff;
+    }
+    
     .stMetric {
         background-color: #1e2130;
         padding: 15px;
-        border-radius: 10px;
+        border-radius: 12px;
         border: 1px solid #3d4156;
     }
-    .stCheckbox label {
-        font-size: 0.9rem !important;
+    
+    .stExpander {
+        border-radius: 10px !important;
+        border: 1px solid #3d4156 !important;
     }
     </style>
     """, unsafe_allow_html=True)
 
-st.title("🩺 Advanced Bayesian Diagnosis")
+# App Header with "Pause" Symbol
+st.markdown('<div class="pause-logo">⏸️ Eleven</div>', unsafe_allow_html=True)
 st.markdown("---")
+
+# iOS style toggle for mode (since streamlit doesn't support full theme swap via code easily, 
+# we use this as a UI element or placeholder for user preference)
+col_header, col_toggle = st.columns([8, 1])
+with col_toggle:
+    # A mock iOS switch using native streamlit checkbox with custom label
+    # In a real app, this would trigger session state changes for CSS variables
+    dark_mode = st.checkbox("Mode", value=True, help="Toggle Light/Dark Mode (Simulated)")
 
 # Layout Swapping: Results on the Left, Symptoms on the Right
 col_results, col_symptoms = st.columns([1.2, 1], gap="large")
 
 with col_symptoms:
     st.subheader("📋 Symptom Assessment")
-    st.info("Select all that apply. The model updates in real-time.")
+    st.info("Select all that apply. The model utilizes 31-point physiological data.")
     
     symptoms_input = {}
     
@@ -100,7 +140,7 @@ with col_symptoms:
 
 with col_results:
     # Perform inference
-    with st.spinner("Analyzing physiological data..."):
+    with st.spinner("Analyzing physiological patterns..."):
         probabilities = perform_inference(symptoms_input)
     
     df = pd.DataFrame({
@@ -114,7 +154,7 @@ with col_results:
     st.subheader("🔍 Analysis Results")
     st.metric(label="Primary Diagnosis Confidence", value=top_ailment, delta=f"{top_prob:.1f}% Match")
 
-    # Probability Chart
+    # Probability Chart - Showing all ailments again as requested
     fig = px.bar(
         df, 
         x="Probability (%)", 
@@ -128,7 +168,8 @@ with col_results:
     fig.update_layout(
         yaxis={'categoryorder':'total ascending'},
         margin=dict(l=0, r=0, t=30, b=0),
-        height=500
+        height=600,
+        font=dict(family="Poppins")
     )
     st.plotly_chart(fig, use_container_width=True)
 
@@ -143,11 +184,11 @@ with col_results:
         st.info("The current symptom profile shows low specificity. Please provide more details or consult a professional.")
 
 st.markdown("---")
-st.caption("**Disclaimer:** This tool uses a probabilistic Bayesian Network for educational simulation. It is not a substitute for professional medical diagnosis or treatment.")
+st.caption("**Disclaimer:** This tool uses a probabilistic Bayesian Network (15-Ailment Model) for educational simulation. It is not a substitute for professional medical diagnosis.")
 
-# Hidden trace logic for developers
+# Developer trace
 with st.expander("🔬 Inference Trace"):
     st.write("Evidence Vector:")
-    st.json(symptoms_input)
+    st.json({k: v for k, v in symptoms_input.items() if v})
     st.write("Calculated Probabilities:")
     st.json(probabilities)
