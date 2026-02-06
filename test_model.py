@@ -8,41 +8,71 @@ def test_covid_symptoms():
         'LossOfTaste': True
     }
     probs = perform_inference(evidence)
-    print(f"Top 3: {sorted(probs.items(), key=lambda x: x[1], reverse=True)[:3]}")
-    assert probs['COVID-19'] > 0.4
+    sorted_probs = sorted(probs.items(), key=lambda x: x[1], reverse=True)
+    print(f"Sorted Top 5 Results: {sorted_probs[:5]}")
+    assert sorted_probs[0][0] == 'COVID-19'
     print("COVID test passed!")
 
-def test_strep_throat():
-    print("\nTesting Strep Throat profile: Fever + Sore Throat + Swollen Lymph Nodes")
+def test_gastroenteritis():
+    print("\nTesting Gastroenteritis: Nausea + Vomiting + Diarrhea")
     evidence = {
+        'Nausea': True,
+        'Vomiting': True,
+        'Diarrhea': True
+    }
+    probs = perform_inference(evidence)
+    sorted_probs = sorted(probs.items(), key=lambda x: x[1], reverse=True)
+    print(f"Sorted Top 5 Results: {sorted_probs[:5]}")
+    assert sorted_probs[0][0] == 'Gastroenteritis (Stomach Flu)'
+    print("Gastroenteritis test passed!")
+
+def test_mono():
+    print("\nTesting Infectious Mono: Extreme Fatigue + Fever + Swollen Nodes")
+    evidence = {
+        'Fatigue': True,
         'Fever': True,
-        'SoreThroat': True,
         'SwollenLymphNodes': True
     }
     probs = perform_inference(evidence)
-    print(f"Top 3: {sorted(probs.items(), key=lambda x: x[1], reverse=True)[:3]}")
-    assert probs['Strep Throat'] > probs['Common Cold']
-    print("Strep Throat test passed!")
+    sorted_probs = sorted(probs.items(), key=lambda x: x[1], reverse=True)
+    print(f"Sorted Top 5 Results: {sorted_probs[:5]}")
+    assert sorted_probs[0][0] == 'Infectious Mononucleosis'
+    print("Mono test passed!")
 
-def test_pneumonia():
-    print("\nTesting Pneumonia profile: High Fever + Shortness of Breath + Chest Pain + Cough")
+def test_migraine():
+    print("\nTesting Migraine: Headache + Nausea + Dizziness")
     evidence = {
-        'Fever': True,
-        'ShortnessOfBreath': True,
-        'ChestPain': True,
-        'Cough': True
+        'Headache': True,
+        'Nausea': True,
+        'Dizziness': True
     }
     probs = perform_inference(evidence)
-    print(f"Top 3: {sorted(probs.items(), key=lambda x: x[1], reverse=True)[:3]}")
-    assert probs['Bacterial Pneumonia'] > probs['Common Cold']
-    print("Pneumonia test passed!")
+    sorted_probs = sorted(probs.items(), key=lambda x: x[1], reverse=True)
+    print(f"Sorted Top 5 Results: {sorted_probs[:5]}")
+    assert sorted_probs[0][0] == 'Migraine'
+    print("Migraine test passed!")
+
+def test_pertussis():
+    print("\nTesting Pertussis: Severe Cough + Wheezing + Shortness of Breath")
+    evidence = {
+        'Cough': True,
+        'Wheezing': True,
+        'ShortnessOfBreath': True
+    }
+    probs = perform_inference(evidence)
+    sorted_probs = sorted(probs.items(), key=lambda x: x[1], reverse=True)
+    print(f"Sorted Top 5 Results: {sorted_probs[:5]}")
+    assert sorted_probs[0][0] == 'Pertussis (Whooping Cough)'
+    print("Pertussis test passed!")
 
 if __name__ == "__main__":
     try:
         test_covid_symptoms()
-        test_strep_throat()
-        test_pneumonia()
-        print("\nAll expanded model tests passed successfully!")
+        test_gastroenteritis()
+        test_mono()
+        test_migraine()
+        test_pertussis()
+        print("\nAll 15-ailment model tests passed successfully!")
     except Exception as e:
         print(f"\nTests failed: {e}")
         import traceback

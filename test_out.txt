@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "C:\Users\HP\eleven\test_model.py", line 74, in <module>
+    test_pertussis()
+  File "C:\Users\HP\eleven\test_model.py", line 65, in test_pertussis
+    assert sorted_probs[0][0] == 'Pertussis (Whooping Cough)'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+Testing COVID-19 profile: Fever + Cough + Loss of Taste
+Sorted Top 5 Results: [('COVID-19', 0.8774443527925188), ('Influenza (Flu)', 0.033295879458644685), ('Gastroenteritis (Stomach Flu)', 0.02089153220934569), ('Acute Sinusitis', 0.013927688139563795), ('Infectious Mononucleosis', 0.013927688139563795)]
+COVID test passed!
+
+Testing Gastroenteritis: Nausea + Vomiting + Diarrhea
+Sorted Top 5 Results: [('Gastroenteritis (Stomach Flu)', 0.9812030278610757), ('Influenza (Flu)', 0.014429456292074637), ('COVID-19', 0.0022546025456366622), ('Migraine', 0.0009619637528049758), ('Bacterial Pneumonia', 0.0004008182303354067)]
+Gastroenteritis test passed!
+
+Testing Infectious Mono: Extreme Fatigue + Fever + Swollen Nodes
+Sorted Top 5 Results: [('Infectious Mononucleosis', 0.37788088378069307), ('Strep Throat', 0.35171184750779183), ('Influenza (Flu)', 0.06005793824630821), ('COVID-19', 0.05338483399671841), ('Tuberculosis', 0.04396398093847397)]
+Mono test passed!
+
+Testing Migraine: Headache + Nausea + Dizziness
+Sorted Top 5 Results: [('Migraine', 0.46970249179967744), ('Gastroenteritis (Stomach Flu)', 0.21567971562230087), ('Influenza (Flu)', 0.1572664593079277), ('COVID-19', 0.03744439507331612), ('Infectious Mononucleosis', 0.03594661927038348)]
+Migraine test passed!
+
+Testing Pertussis: Severe Cough + Wheezing + Shortness of Breath
+Sorted Top 5 Results: [('Viral Bronchitis', 0.37377906255815563), ('Bacterial Pneumonia', 0.2689627116820591), ('Pertussis (Whooping Cough)', 0.15030269182232714), ('Tuberculosis', 0.08009551340531908), ('Influenza (Flu)', 0.06674626117109923)]
+
+Tests failed: 
